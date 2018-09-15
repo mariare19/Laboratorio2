@@ -4,4 +4,5 @@ export class RecetaClass {
     ingredientes: string[];
     dificultad: string;
     porciones: number;
+    urlimg: string;
 }

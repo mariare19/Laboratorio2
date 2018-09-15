@@ -14,7 +14,11 @@ export class ListadoRecetasComponent implements OnInit {
 	form: FormGroup;
 	receta: RecetaClass;
 	constructor(private formBuilder: FormBuilder) {
-		localStorage.setItem('arrayRecetas', JSON.stringify(this.arrayRecetas));
+		if (localStorage.getItem('arrayRecetas')) {
+			this.arrayRecetas = JSON.parse(localStorage.getItem('arrayRecetas'));
+		} else {
+			localStorage.setItem('arrayRecetas', JSON.stringify(this.arrayRecetas));
+		}
 	}
 
 	ngOnInit() {
@@ -25,45 +29,6 @@ export class ListadoRecetasComponent implements OnInit {
 			Dificultad: ['', Validators.required],
 			Porciones: ['', Validators.required]
 		})
-
-		// this.arrayRecetas = [
-		// 	{
-		// 		id: '1',
-		// 		titulo: 'Brownies de Nutella',
-		// 		descripcion: 'Este brownie de Nutella es facilísimo de preparar, con muy pocos ingredientes, aunque puedes personalizarlo a tu gusto.',
-		// 		ingredientes: [
-		// 			'Chocolate',
-		// 			'Huevo',
-		// 			'Harina',
-		// 			'Mantequilla'
-		// 		],
-		// 		urlimg: "assets/images/brownies.jpg"
-		// 	},
-		// 	{
-		// 		id: '2',
-		// 		titulo: 'Crema de Queso y Cereza',
-		// 		descripcion: 'Bonitas capas de migas de galleta Graham, sabroso relleno y relleno de fruta hacen que estos postres de queso crema sean un destacado!',
-		// 		ingredientes: [
-		// 			'Azucar',
-		// 			'Mantequilla',
-		// 			'Harina',
-		// 			'Leche Condensada'
-		// 		],
-		// 		urlimg: "assets/images/fresas.jpg"
-		// 	},
-		// 	{
-		// 		id: '3',
-		// 		titulo: 'Tim Tam Shooters',
-		// 		descripcion: '¡Sorprenda a sus invitados con estos magníficos tiradores de postres Tim Tam, hechos con espuma de chocolate y crema batida de Tim Tam!',
-		// 		ingredientes: [
-		// 			'Azucar',
-		// 			'Mantequilla',
-		// 			'Harina',
-		// 			'Leche Condensada'
-		// 		],
-		// 		urlimg: "assets/images/chocolate2.jpg"
-		// 	}
-		// ]
 	}
 
 	showModal(tipo, i) {
