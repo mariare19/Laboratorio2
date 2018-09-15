@@ -1,1 +1,49 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: DancingScript;
+    src: url(assets/DancingScript-Bold.ttf);
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+  }
+  body {
+    margin-bottom: 60px;
+    font-family:DancingScript;
+  }
+
+  .btn-primary {
+    background-color: pink;
+    border-color: pink;
+  }
+  
+  .btn-primary:hover {
+    background-color: rgb(248, 145, 163);
+    border-color: rgb(248, 145, 163);
+  }
+  
+  .btn-primary:active:focus {
+    background-color: rgb(248, 145, 163);
+    border-color: rgb(248, 145, 163);
+  }
+  
+  .btn-primary:focus {
+    background-color: rgb(248, 145, 163);
+    border-color: rgb(248, 145, 163);
+  }
+  
+  .img-small {
+    /* height: 305px; */
+    width: 100%;
+  }
+  
+  .img-medium {
+    /* height: 305px; */
+    width: 100%;
+  }
+  
+  .img-large {
+    /* height: 305px; */
+    width: 100%;
+  }
