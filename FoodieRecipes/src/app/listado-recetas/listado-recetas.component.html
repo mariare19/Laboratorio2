@@ -8,10 +8,10 @@
 	<div class="container">
 		<div class="row">
 			<div *ngIf="arrayRecetas.length > 0">
-				<div class="col-md-4 col-sm-6" *ngFor="let receta of arrayRecetas">
+				<div class="col-md-4 col-sm-6" *ngFor="let receta of arrayRecetas; let i = index">
 					<div class="text-right">
-						<button class="btn btn-default" (click)="showModal('Editar', receta)">Editar</button>
-						<button class="btn btn-default" (click)="borrarReceta()">Borrar</button>
+						<button class="btn btn-default" (click)="showModal('Editar', i)">Editar</button>
+						<button class="btn btn-default" (click)="borrarReceta(i)">Borrar</button>
 					</div>
 					<img class="img-circle" src="{{receta.urlimg}}" width="140" height="140">
 					<h2>{{receta.titulo}}</h2>
@@ -38,7 +38,7 @@
 		</button>
 	</div>
 	<div class="app-modal-body">
-		<form [formGroup]="form" (ngSubmit)="Guardar(form.value, tipo, receta)" autocomplete="off">
+		<form [formGroup]="form" (ngSubmit)="Guardar(form, tipo)" autocomplete="off">
 			<div class="form-group">
 				<label>Titulo:</label>
 				<input type="text" class="form-control" formControlName="Titulo">
@@ -56,7 +56,6 @@
 					<div class="col-md-6">
 						<label>Dificultad:</label>
 						<select class="form-control" formControlName="Dificultad">
-							<option value="">[Seleccione una opcion]</option>
 							<option value="Facil">Facil</option>
 							<option value="Medio">Medio</option>
 							<option value="Dificil">Dificil</option>
@@ -65,7 +64,6 @@
 					<div class="col-md-6">
 						<label>Porciones:</label>
 						<select class="form-control" formControlName="Porciones">
-							<option value="">[Seleccione una opcion]</option>
 							<option value="1">1</option>
 							<option value="2">2</option>
 							<option value="5">5</option>

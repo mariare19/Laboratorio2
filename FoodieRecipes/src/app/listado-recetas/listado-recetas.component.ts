@@ -66,11 +66,13 @@ export class ListadoRecetasComponent implements OnInit {
 		// ]
 	}
 
-	showModal(tipo, receta: RecetaClass) {
+	showModal(tipo, i) {
 		this.tipo = tipo;
 		if (tipo == 'Nueva') {
 			this.form.reset();
 		} else {
+			this.arrayRecetas = JSON.parse(localStorage.getItem('arrayRecetas'));
+			let receta = this.arrayRecetas[i];
 			this.form.controls['Titulo'].setValue(receta.titulo);
 			this.form.controls['Descripcion'].setValue(receta.descripcion);
 			let ingredientes = '';
@@ -81,7 +83,7 @@ export class ListadoRecetasComponent implements OnInit {
 			this.form.controls['Ingredientes'].setValue(ingredientes);
 			this.form.controls['Dificultad'].setValue(receta.dificultad);
 			this.form.controls['Porciones'].setValue(receta.porciones);
-			this.receta = receta;
+			this.form['id'] = i;
 		}
 		document.querySelector('#modalRecetas').classList.add('md-show');
 	}
@@ -90,29 +92,26 @@ export class ListadoRecetasComponent implements OnInit {
 		document.querySelector('#modalRecetas').classList.remove('md-show');
 	}
 
-	borrarReceta() {
+	borrarReceta(i) {
 		this.arrayRecetas = JSON.parse(localStorage.getItem('arrayRecetas'));
+		this.arrayRecetas.splice(i, 1);
+		localStorage.setItem('arrayRecetas', JSON.stringify(this.arrayRecetas));
 	}
 
-	Guardar(formValues, tipo, receta: RecetaClass = new RecetaClass()) {
-		receta.titulo = formValues['Titulo'];
-		receta.descripcion = formValues['Descripcion'];
+	Guardar(formValues, tipo) {
+		let receta: RecetaClass = new RecetaClass();
+		receta.titulo = formValues.value['Titulo'];
+		receta.descripcion = formValues.value['Descripcion'];
 		let ingredientes = [];
-		ingredientes = formValues['Ingredientes'].split(',');
+		ingredientes = formValues.value['Ingredientes'].split(',');
 		receta.ingredientes = ingredientes;
-		receta.dificultad = formValues['Dificultad'];
-		receta.porciones = formValues['Porciones'];
+		receta.dificultad = formValues.value['Dificultad'];
+		receta.porciones = formValues.value['Porciones'];
 		this.arrayRecetas = JSON.parse(localStorage.getItem('arrayRecetas'));
 		if (tipo == 'Nueva') {
-			receta.id = this.arrayRecetas.length;
 			this.arrayRecetas.push(receta);
 		} else {
-			for (let i = 0; i < this.arrayRecetas.length; i++) {
-				let element = this.arrayRecetas[i];
-				if (element.id == receta.id) {
-					Object.assign(element, receta);
-				}
-			}
+			Object.assign(this.arrayRecetas[this.form['id']], receta);
 		}
 		localStorage.setItem('arrayRecetas', JSON.stringify(this.arrayRecetas));
 		this.closeModal();
