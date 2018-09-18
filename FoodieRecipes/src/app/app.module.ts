@@ -7,13 +7,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { PrincipalComponent } from './principal/principal.component';
 import { ListadoRecetasComponent } from './listado-recetas/listado-recetas.component';
 import { ModalAnimationComponent } from './modal-animation/modal-animation.component';
+import { RecetasComponent } from './recetas/recetas.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PrincipalComponent,
     ListadoRecetasComponent,
-    ModalAnimationComponent
+    ModalAnimationComponent,
+    RecetasComponent
   ],
   imports: [
     BrowserModule,
