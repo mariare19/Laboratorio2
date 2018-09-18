@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '../../../node_modules/@angular/forms';
 import { RecetaClass } from '../Modelo/receta';
+import Swal from 'sweetalert2';
 
 @Component({
 	selector: 'app-listado-recetas',
@@ -58,9 +59,25 @@ export class ListadoRecetasComponent implements OnInit {
 	}
 
 	borrarReceta(i) {
-		this.arrayRecetas = JSON.parse(localStorage.getItem('arrayRecetas'));
-		this.arrayRecetas.splice(i, 1);
-		localStorage.setItem('arrayRecetas', JSON.stringify(this.arrayRecetas));
+		Swal({
+			title: 'Borrar',
+			text: 'Seguro que desea borrar esta receta?',
+			type: 'warning',
+			showCancelButton: true,
+			confirmButtonText: "Si, seguro!",
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33'
+		}).then((result) => {
+			if (result.value != "" && !result.dismiss) {
+				Swal({
+					type: 'success',
+					title: 'Se borro la receta!'
+				});
+				this.arrayRecetas = JSON.parse(localStorage.getItem('arrayRecetas'));
+				this.arrayRecetas.splice(i, 1);
+				localStorage.setItem('arrayRecetas', JSON.stringify(this.arrayRecetas));
+			}
+		}).catch(Swal.noop);
 	}
 
 	Guardar(formValues, tipo) {
