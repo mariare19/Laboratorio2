@@ -1,0 +1,53 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: Handlee;
+  src: url(assets/Handlee-Regular.ttf);
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+  }
+  body {
+    margin-bottom: 60px;
+    font-family: Handlee;
+  }
+
+  .btn-primary {
+    background-color: pink;
+    border-color: pink;
+  }
+  
+  .btn-primary:hover {
+    background-color: rgb(248, 145, 163);
+    border-color: rgb(248, 145, 163);
+  }
+  
+  .btn-primary:active:focus {
+    background-color: rgb(248, 145, 163);
+    border-color: rgb(248, 145, 163);
+  }
+  
+  .btn-primary:focus {
+    background-color: rgb(248, 145, 163);
+    border-color: rgb(248, 145, 163);
+  }
+  
+  .img-small {
+    /* height: 305px; */
+    width: 100%;
+  }
+  
+  .img-medium {
+    /* height: 305px; */
+    width: 100%;
+  }
+  
+  .img-large {
+    /* height: 305px; */
+    width: 100%;
+  }
+
+.swal2-show {
+  font-size: 15px !important;
+}
