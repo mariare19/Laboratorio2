@@ -9,11 +9,11 @@ import { RecetaService } from '../servicios/receta.service';
 })
 export class RecetaComponent implements OnInit {
 
-	@Input() keyReceta:string;
+	@Input() keyReceta: string;
 	receta: RecetaClass;
 	@Output() borrar = new EventEmitter();
 	@Output() editar = new EventEmitter();
-	constructor(private recetaService:RecetaService) { }
+	constructor(private recetaService: RecetaService) { }
 
 	ngOnInit() {
 		this.receta = this.recetaService.getReceta(this.keyReceta);

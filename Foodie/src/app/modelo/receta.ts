@@ -7,7 +7,7 @@ export class RecetaClass {
     porciones: number;
     urlimg: string;
 
-    constructor(titulo?,descripcion?,ingredientes?,dificultad?,porciones?) {
+    constructor(titulo?, descripcion?, ingredientes?, dificultad?, porciones?) {
         this.titulo = titulo || '';
         this.descripcion = descripcion || '';
         this.ingredientes = ingredientes || [];

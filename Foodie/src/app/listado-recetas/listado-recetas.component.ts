@@ -15,7 +15,7 @@ export class ListadoRecetasComponent implements OnInit {
 	diccRecetas: any = {};
 	keyRecetas: any;
 	receta: RecetaClass;
-	sizeDicc:number = 0 ;
+	sizeDicc: number = 0;
 	constructor(private recetaService: RecetaService, private router: Router) { }
 
 	ngOnInit() {
