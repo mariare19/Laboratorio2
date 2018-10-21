@@ -7,7 +7,7 @@
 	</div>
 	<div class="container">
 		<div class="row">
-			<h3 *ngIf="sizeDicc == 0">Crea nuevas recetas para agregar a tu listado!</h3>
+			<h3 *ngIf="keyRecetas.length == 0">Crea nuevas recetas para agregar a tu listado!</h3>
 			<div class="col-md-4 col-sm-6" *ngFor="let receta of keyRecetas;">
 				<app-receta [keyReceta]="receta" (borrar)="borrarReceta($event)" (editar)="Editar($event)"></app-receta>
 			</div>

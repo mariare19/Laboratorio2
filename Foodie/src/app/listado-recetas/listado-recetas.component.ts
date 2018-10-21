@@ -11,17 +11,12 @@ import { Router } from '@angular/router';
 	styleUrls: ['./listado-recetas.component.css']
 })
 export class ListadoRecetasComponent implements OnInit {
-
-	diccRecetas: any = {};
-	keyRecetas: any;
+	keyRecetas: any = [];
 	receta: RecetaClass;
-	sizeDicc: number = 0;
 	constructor(private recetaService: RecetaService, private router: Router) { }
 
 	ngOnInit() {
-		this.diccRecetas = this.recetaService.getRecetas();
-		this.keyRecetas = Object.keys(this.diccRecetas);
-		this.sizeDicc = this.keyRecetas.length;
+		this.updateInfo();
 	}
 
 	borrarReceta(keyReceta) {
@@ -30,23 +25,32 @@ export class ListadoRecetasComponent implements OnInit {
 			text: 'Seguro que desea borrar esta receta?',
 			type: 'warning',
 			showCancelButton: true,
-			confirmButtonText: "Si, seguro!",
+			confirmButtonText: "Sí",
+			cancelButtonText: 'Cancelar',
 			confirmButtonColor: '#3085d6',
 			cancelButtonColor: '#d33'
 		}).then((result) => {
 			if (result.value != "" && !result.dismiss) {
-				this.recetaService.BorrarReceta(keyReceta);
-				this.updateInfo();
-				Swal({
-					type: 'success',
-					title: 'Se borro la receta!'
+				this.recetaService.BorrarReceta(keyReceta['_id']).then(response => {
+					if (response.status == 204) {
+						this.updateInfo();
+						Swal({
+							type: 'success',
+							title: 'Se borro la receta!'
+						});
+					} else {
+						Swal({
+							type: 'error',
+							title: 'No se pudo borrar la receta.'
+						});
+					}
 				});
 			}
 		}).catch(Swal.noop);
 	}
 
 	Editar(keyReceta) {
-		this.router.navigate(['/editar/' + keyReceta]);
+		this.router.navigate(['/editar/' + keyReceta['_id']]);
 	}
 
 	nuevaReceta() {
@@ -54,8 +58,14 @@ export class ListadoRecetasComponent implements OnInit {
 	}
 
 	updateInfo() {
-		this.diccRecetas = this.recetaService.getRecetas();
-		this.keyRecetas = Object.keys(this.diccRecetas);
-		this.sizeDicc = this.keyRecetas.length;
+		this.recetaService.getRecetas().then(response => {
+			if (response.status == 200) {
+				response.json().then(data => {
+					this.keyRecetas = data;
+				})
+			} else {
+				this.keyRecetas = [];
+			}
+		})
 	}
 }

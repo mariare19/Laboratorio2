@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { RecetaClass } from '../Modelo/receta';
 import { Guid } from "guid-typescript";
+import { environment } from '../../environments/environment';;
 
 @Injectable()
 
@@ -11,32 +12,44 @@ export class RecetaService {
     constructor() { }
 
     NuevaReceta(receta: RecetaClass) {
-        let string = 'key' + Guid.create();
-        this.diccRecetas[string] = receta;
-        localStorage.setItem('diccRecetas', JSON.stringify(this.diccRecetas));
+        // let string = 'key' + Guid.create();
+        // this.diccRecetas[string] = receta;
+        // localStorage.setItem('diccRecetas', JSON.stringify(this.diccRecetas));    
+         let info = {
+            method: 'POST',
+            body: JSON.stringify(receta),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
+        return fetch(`${environment.EndPoint}/create`, info);
     }
 
     EditarReceta(key, receta) {
-        this.diccRecetas[key] = receta;
-        localStorage.setItem('diccRecetas', JSON.stringify(this.diccRecetas));
+        let info = {
+            method: 'PUT',
+            body: JSON.stringify(receta),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
+        return fetch(`${environment.EndPoint}/update/${key}`, info);
     }
 
     BorrarReceta(key) {
-        delete this.diccRecetas[key];
-        localStorage.setItem('diccRecetas', JSON.stringify(this.diccRecetas));
+        // delete this.diccRecetas[key];
+        // localStorage.setItem('diccRecetas', JSON.stringify(this.diccRecetas));
+        let info = {
+            method: 'DELETE'
+        };
+        return fetch(`${environment.EndPoint}/delete/${key}`, info);
     }
 
     getRecetas() {
-        if (localStorage.getItem('diccRecetas')) {
-            this.diccRecetas = JSON.parse(localStorage.getItem('diccRecetas'));
-            return this.diccRecetas;
-        } else {
-            return {};
-        }
+        return fetch(`${environment.EndPoint}/read`);
     }
 
     getReceta(key) {
-        this.diccRecetas = JSON.parse(localStorage.getItem('diccRecetas'));
-        return this.diccRecetas[key];
+        return fetch(`${environment.EndPoint}/read/${key}`);
     }
 }
