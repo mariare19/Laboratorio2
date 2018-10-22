@@ -11,10 +11,7 @@ export class RecetaService {
 
     constructor() { }
 
-    NuevaReceta(receta: RecetaClass) {
-        // let string = 'key' + Guid.create();
-        // this.diccRecetas[string] = receta;
-        // localStorage.setItem('diccRecetas', JSON.stringify(this.diccRecetas));    
+    NuevaReceta(receta: RecetaClass) {  
          let info = {
             method: 'POST',
             body: JSON.stringify(receta),
@@ -37,8 +34,6 @@ export class RecetaService {
     }
 
     BorrarReceta(key) {
-        // delete this.diccRecetas[key];
-        // localStorage.setItem('diccRecetas', JSON.stringify(this.diccRecetas));
         let info = {
             method: 'DELETE'
         };

@@ -44,7 +44,7 @@ export class ListadoRecetasComponent implements OnInit {
 							title: 'No se pudo borrar la receta.'
 						});
 					}
-				});
+				}).catch(error => console.error(error));
 			}
 		}).catch(Swal.noop);
 	}
@@ -66,6 +66,6 @@ export class ListadoRecetasComponent implements OnInit {
 			} else {
 				this.keyRecetas = [];
 			}
-		})
+		}).catch(error => console.error(error));
 	}
 }
