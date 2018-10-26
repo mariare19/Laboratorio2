@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { RecetaClass } from '../Modelo/receta';
-import { Guid } from "guid-typescript";
 import { environment } from '../../environments/environment';;
 
 @Injectable()
@@ -19,7 +18,7 @@ export class RecetaService {
                 'Content-Type': 'application/json'
             }
         };
-        return fetch(`${environment.EndPoint}/create`, info);
+        return fetch(`${environment.EndPoint}`, info);
     }
 
     EditarReceta(key, receta) {
@@ -30,21 +29,21 @@ export class RecetaService {
                 'Content-Type': 'application/json'
             }
         };
-        return fetch(`${environment.EndPoint}/update/${key}`, info);
+        return fetch(`${environment.EndPoint}/${key}`, info);
     }
 
     BorrarReceta(key) {
         let info = {
             method: 'DELETE'
         };
-        return fetch(`${environment.EndPoint}/delete/${key}`, info);
+        return fetch(`${environment.EndPoint}/${key}`, info);
     }
 
     getRecetas() {
-        return fetch(`${environment.EndPoint}/read`);
+        return fetch(`${environment.EndPoint}`);
     }
 
     getReceta(key) {
-        return fetch(`${environment.EndPoint}/read/${key}`);
+        return fetch(`${environment.EndPoint}/${key}`);
     }
 }
