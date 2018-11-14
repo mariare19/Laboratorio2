@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  EndPoint: "http://localhost:3000/api/v1/foodie"
+  EndPoint: "http://recipes-foodie-back.westus.azurecontainer.io:3000/api/v1/foodie"
 };
