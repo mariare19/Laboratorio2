@@ -13,19 +13,19 @@ Este proyecto es una aplicación en Angular en donde se realiza un CRUD sobre di
 ```
 git clone https://github.com/mariare19/Laboratorio2.git
 ```
-* Ingresar a la carpeta "myapp".
+* Ingresar a la carpeta `Foodie`.
 ```
 cd Foodie
 ```
-* Correr el comando npm install.
+* Correr el comando `npm install`.
 ```
 npm install
 ```
-* Correr el comando ng serve para correr localmente la aplicación
+* Correr el comando `ng serve` para iniciar localmente la aplicación
 ```
 ng serve
 ```
-* Ir al browser y escribir localhost:4200.
+* Ir al browser y escribir `localhost:4200`.
 ```
 localhost:42000
 ```
