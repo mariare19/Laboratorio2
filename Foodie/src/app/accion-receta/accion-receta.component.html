@@ -10,11 +10,11 @@
 			<div class="col-md-8">
 				<form [formGroup]="form" (ngSubmit)="Guardar(form.value)" autocomplete="off">
 					<div class="form-group">
-						<label>Titulo:</label>
+						<label>Título:</label>
 						<input type="text" class="form-control" formControlName="Titulo">
 					</div>
 					<div class="form-group">
-						<label>Descripcion:</label>
+						<label>Descripción:</label>
 						<input type="textarea" class="form-control" formControlName="Descripcion">
 					</div>
 					<div class="form-group">
@@ -26,9 +26,9 @@
 							<div class="col-md-6">
 								<label>Dificultad:</label>
 								<select class="form-control" formControlName="Dificultad">
-									<option value="Facil">Facil</option>
+									<option value="Facil">Fácil</option>
 									<option value="Medio">Medio</option>
-									<option value="Dificil">Dificil</option>
+									<option value="Dificil">Difícil</option>
 								</select>
 							</div>
 							<div class="col-md-6">
