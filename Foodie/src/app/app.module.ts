@@ -9,6 +9,8 @@ import { ListadoRecetasComponent } from './listado-recetas/listado-recetas.compo
 import { RecetaComponent } from './receta/receta.component';
 import { RecetaService } from './servicios/receta.service';
 import { AccionRecetaComponent } from './accion-receta/accion-receta.component';
+import { TagInputModule } from 'ngx-chips';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { AccionRecetaComponent } from './accion-receta/accion-receta.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TagInputModule,
+    BrowserAnimationsModule
   ],
   providers: [
     RecetaService

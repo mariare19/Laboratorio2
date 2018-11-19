@@ -34,10 +34,6 @@ export class ListadoRecetasComponent implements OnInit {
 				this.recetaService.BorrarReceta(keyReceta['_id']).then(response => {
 					if (response.status == 204) {
 						this.updateInfo();
-						Swal({
-							type: 'success',
-							title: 'Se borro la receta!'
-						});
 					} else {
 						Swal({
 							type: 'error',
