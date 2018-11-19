@@ -30,9 +30,8 @@ ng serve
 localhost:42000
 ```
 * Ir al siguiente link, para correr el BackEnd de la aplicación.
-```
-[FoodieRecipesBackEnd](https://github.com/mariare19/Laboratorio5.git)
-```
+  - [FoodieRecipesBackEnd](https://github.com/mariare19/Laboratorio5.git)
+
 
 ## Construido con
 * [Angular](https://angular.io/)
