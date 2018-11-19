@@ -53,7 +53,13 @@ export class AccionRecetaComponent implements OnInit {
 						Porciones: [this.receta.porciones, Validators.required]
 					});
 				})
-			}).catch(error => console.error(error));
+			}).catch(error => {
+				Swal({
+					type: 'error',
+					title: 'Hubo un error.',
+					text: error
+				});
+			});
 		} else {
 			this.form = this.formBuilder.group({
 				Titulo: ['', Validators.required],
@@ -90,7 +96,13 @@ export class AccionRecetaComponent implements OnInit {
 						title: 'No se actualizo la receta!'
 					});
 				}
-			}).catch(error => console.error(error));
+			}).catch(error => {
+				Swal({
+					type: 'error',
+					title: 'Hubo un error.',
+					text: error
+				});
+			});
 		} else {
 			this.recetaService.NuevaReceta(receta).then(response => {
 				if (response.status == 201) {
@@ -105,7 +117,13 @@ export class AccionRecetaComponent implements OnInit {
 						title: 'No se creo la receta!'
 					});
 				}
-			}).catch(error => console.error(error));
+			}).catch(error => {
+				Swal({
+					type: 'error',
+					title: 'Hubo un error',
+					text: error
+				});
+			});
 		}
 	}
 
